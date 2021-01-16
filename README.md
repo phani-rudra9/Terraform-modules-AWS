@@ -8,7 +8,7 @@ terraform init
 
 # 2.Plan the script to make sure what exactly it's creating and redirect the output to JSON
 ```sh
-terraform plan --out=outputs.json --var-file=terraform.tfvars
+terraform plan --out=outputs.json --var-file=terraform-UAT.tfvars
 ```
 # 3.Apply the terraform 
 ```sh
