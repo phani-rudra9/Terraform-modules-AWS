@@ -1,7 +1,7 @@
 # Terraform-modules-vpc-ecr-ecs-taskdef
 Terraform modules for vpc, subnets, ecr-repo, ecs
 # commands:-
-# 1.Initialize the terraform run
+# 1.Initialize the terraform script run
 ```sh
 terraform init
 ```
