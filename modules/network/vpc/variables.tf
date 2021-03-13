@@ -1,5 +1,5 @@
 variable "vpc" {
-    type = list
+    type = list 
 }
 
 variable "environment" {

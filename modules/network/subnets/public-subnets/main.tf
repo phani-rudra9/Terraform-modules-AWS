@@ -5,7 +5,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone  = lookup(var.public_subnets[count.index],"availability_zone")
   map_public_ip_on_launch = lookup(var.public_subnets[count.index],"map_public_ip_on_launch")
   tags = {
-    Name = lookup(var.public_subnets[count.index],"name")
+    Name = format("${var.environment}-%s",lookup(var.public_subnets[count.index],"name"))
     Environment = var.environment
   }
 }

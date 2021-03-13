@@ -2,10 +2,10 @@ variable "vpc_id" {
     type = string
 }
 
-variable "igw_name" {
-    type = string
+variable "private_subnets" {
+    type = list
 }
 
 variable "environment" {
-  type = string
+    type = string
 }

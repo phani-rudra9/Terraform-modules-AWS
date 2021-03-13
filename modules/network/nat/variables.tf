@@ -1,7 +1,7 @@
-# variable "environment" {
-#     type = string
-# }
+variable "public_subnets" {
+    type = list
+}
 
-# variable "public_subnets" {
-#     type = string
-# }
+variable "environment" {
+    type = string
+}

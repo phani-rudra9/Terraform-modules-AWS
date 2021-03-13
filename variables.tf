@@ -1,49 +1,31 @@
 variable "region" {
-    type = string 
-    default = ""
-}
-
-variable "environment" {
     type = string
-    default = ""
 }
 
 variable "vpc" {
     type = list
-    default =[] 
-    }
+}
+
+variable "environment" {
+    type = string
+}
 
 variable "public_subnets" {
     type = list
-    default = []
 }
 
-variable "igw" {
+variable "private_subnets" {
     type = list
-    default = []
-}
-variable "ecr-repo" {
-    type = list
-    default = []  
 }
 
-variable "created_by" {
+variable "igw_name" {
     type = string
-    default = "vara-prasad"
-  
 }
 
-variable "aws_ecs_task_definition" {
+variable "public_subnet_route_tables" {
     type = list
-    default=[]
 }
 
-variable "ecs" {
+variable "private_subnet_route_tables" {
     type = list
-    default = []
-}
-
-variable "enable_container_insights" {
-  type = string
-  default = "yes"
 }

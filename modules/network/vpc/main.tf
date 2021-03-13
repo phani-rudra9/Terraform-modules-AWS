@@ -5,8 +5,8 @@ resource "aws_vpc" "phani" {
   enable_dns_support = lookup(var.vpc[count.index],"enable_dns_support")
   enable_dns_hostnames = lookup(var.vpc[count.index],"enable_dns_hostnames")
   tags = {
-    Name = lookup(var.vpc[count.index],"name")
+    Name = format("${var.environment}-%s",lookup(var.vpc[count.index],"name"))
     Environment = var.environment
     Terraformed = "True"
   }
-}
+} 

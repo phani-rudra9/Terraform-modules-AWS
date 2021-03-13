@@ -1,42 +1,35 @@
 output "vpc_id" {
-    value = module.vpc.vpc_id
+    value = module.vpc.*.vpc_id  
 }
 
-output "subnet_id" {
-    value = module.public_subnets.*.subnet_id
+output "private_subnets_id" {
+    value = module.private_subnets.*.private_subnets_id 
+}
+
+output "public_subnets_id" {
+     value = module.public_subnets.*.public_subnets_id 
 }
 
 output "igw_id" {
-    value = module.igw.*.igw_id
+  value = module.igw.igw_id
 }
 
-# output "nat_id" {
-#     value = module.nat.*.nat_id
-# }
-
-# output "eip_id" {
-#   value = module.nat.*.eip_id
-# }
-output "repo_url" {
-    value = module.ecrrepo.*.repo_url
+output "public_route_table_id" {
+     value = module.public_route_tables.*.public_route_table_id
 }
 
-output "task_def_arn" {
-    value = module.taskdef.*.task_def_arn
+output "public_route_table_owner_id" {
+     value = module.public_route_tables.*.public_route_table_owner_id
 }
 
-output "task_family" {
-    value = module.taskdef.*.task_family
+output "private_route_table_id" {
+     value = module.private_route_tables.*.private_route_table_id
 }
 
-output "task_revision" {
-    value = module.taskdef.*.task_revision
+output "private_route_table_owner_id" {
+     value = module.private_route_tables.*.private_route_table_owner_id
 }
 
-output "ecs_arn" {
-  value = module.ecs.*.ecs_arn
-}
-
-output "ecs_id" {
-  value = module.ecs.*.ecs_id
+output "nat_gw_id" {
+    value = module.nat_gws.*.nat_gw_id
 }
