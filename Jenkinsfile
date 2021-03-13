@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Terraform Code Pull'){
            steps {
-              git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-vpc-ecr-ecs.git'
+              git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-AWS.git'
            }
         }
         stage('Terraform Initialize'){
@@ -33,11 +33,6 @@ pipeline {
         stage('Terraform Plan'){ 
            steps {
               sh 'terraform plan -var-file="./${Environment}.tfvars" -out=${Environment}tfplanout'
-            //   script {
-            //   timeout(time: 10, unit: 'MINUTES') {
-            //     input(id: "Terraform Apply Gate", message: "Terraform Plan ${params.Environment}tfplanout?", ok: 'Apply')
-            //   }
-            // }
 		   }
         }
         stage('Terraform Apply') {
