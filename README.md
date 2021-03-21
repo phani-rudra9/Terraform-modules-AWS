@@ -10,7 +10,7 @@ terraform init
 ```sh
 terraform plan --out=outputs.json --var-file=./env/UAT.tfvars
 ```
-# 3.Apply the terraform 
+# 3.Apply the terraform  
 ```sh
 terraform apply "outputs.json"
 ```
