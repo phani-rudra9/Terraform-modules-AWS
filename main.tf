@@ -49,3 +49,18 @@ module "private_route_tables" {
     vpc_id = module.vpc.vpc_id[0]
 }
 
+module "public_instances" {
+    source = "./modules/Ec2/public-instances"
+    environment = var.environment
+    PublicInstances = var.PublicInstances
+    public_sg_id = module.public_security_group.public_sg_id[0]
+    public_subnetid = module.public_subnets.public_subnets_id[0]
+}
+
+module "public_security_group" {
+  source = "./modules/Network/security_groups"
+  environment = var.environment
+  public_security_group_rules = var.public_security_group_rules
+  public_security_groups = var.public_security_groups
+  vpc_id = module.vpc.vpc_id[0]
+}

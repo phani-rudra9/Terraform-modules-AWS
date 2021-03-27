@@ -33,3 +33,11 @@ output "private_route_table_owner_id" {
 output "nat_gw_id" {
     value = module.nat_gws.*.nat_gw_id
 }
+
+output "public_instance_id" {
+  value = module.public_instances.*.public_instance_id
+}
+
+output "public_sg_id" {
+  value = module.public_security_group.*.public_sg_id
+}

@@ -1,5 +1,6 @@
 # Terraform-modules-AWS
-Terraform modules for vpc, subnets, nat gateways, route tables, eip's
+Terraform modules for vpc, subnets, nat gateways, route tables, eip's, Security_Groups, Ec2 Instances, user_data
+
 # commands:-
 # 1.Initialize the terraform script run
 ```sh

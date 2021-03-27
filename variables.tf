@@ -29,3 +29,15 @@ variable "public_subnet_route_tables" {
 variable "private_subnet_route_tables" {
     type = list
 }
+
+variable "PublicInstances" {
+  type = list
+}
+
+variable "public_security_group_rules" {
+  type = list
+}
+
+variable "public_security_groups" {
+  type = list
+}
