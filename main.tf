@@ -1,11 +1,11 @@
 module "vpc" {
-   source="./modules/Network/vpc"
+   source="./modules/network/vpc"
    vpc = var.vpc
    environment = var.environment  
 }
 
 module "igw" {
-    source = "./modules/Network/igw"
+    source = "./modules/network/igw"
     igw_name = var.igw_name
     vpc_id = module.vpc.vpc_id[0]
     environment = var.environment    
@@ -26,7 +26,7 @@ module "private_subnets" {
 }
 
 module "nat_gws" {
-    source = "./modules/Network/nat"
+    source = "./modules/network/nat"
     environment = var.environment
     public_subnets = module.public_subnets.public_subnets_id
 }
