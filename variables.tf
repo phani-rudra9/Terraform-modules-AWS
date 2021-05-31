@@ -41,3 +41,15 @@ variable "public_security_group_rules" {
 variable "public_security_groups" {
   type = list
 }
+
+variable "PrivateInstances" {
+  type = list
+}
+
+variable "private_security_group_rules" {
+  type = list
+}
+
+variable "private_security_groups" {
+  type = list
+}

@@ -101,3 +101,36 @@ PublicInstances = [
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
     }
 ]
+
+private_security_groups = [
+    {
+        name = "private-security-group-1"
+        description = "This is private security group"
+    }
+]
+
+
+private_security_group_rules = [
+    {
+        from_port   = "22"
+        to_port     = "22"
+        protocol    = "tcp"
+    },
+    {
+        from_port   = "80"
+        to_port     = "80"
+        protocol    = "tcp"
+    }
+]
+
+PrivateInstances = [
+    {
+        name                        = "app-server-1"
+        ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)
+        availability_zone           = "ap-south-1a"
+        instance_type               = "t2.micro"
+        key_name                    = "demo-new-server"
+        associate_public_ip_address = false
+        user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
+    }
+]
