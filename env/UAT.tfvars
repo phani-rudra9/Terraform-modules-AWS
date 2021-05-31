@@ -123,7 +123,7 @@ private_security_group_rules = [
     }
 ]
 
-PrivateInstances = [
+PrivateInstances = [ 
     {
         name                        = "app-server-1"
         ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)

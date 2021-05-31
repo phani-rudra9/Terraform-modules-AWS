@@ -41,3 +41,11 @@ output "public_instance_id" {
 output "public_sg_id" {
   value = module.public_security_group.*.public_sg_id
 }
+
+output "private_instance_id" {
+  value = module.private_instances.*.private_instance_id
+}
+
+output "private_sg_id" {
+  value = module.private_security_group.*.private_sg_id
+}

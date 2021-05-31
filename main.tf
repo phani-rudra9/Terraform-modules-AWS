@@ -58,9 +58,25 @@ module "public_instances" {
 }
 
 module "public_security_group" {
-  source = "./modules/network/security_groups"
+  source = "./modules/network/security_groups/public-security-groups"
   environment = var.environment
   public_security_group_rules = var.public_security_group_rules
   public_security_groups = var.public_security_groups
+  vpc_id = module.vpc.vpc_id[0]
+}
+
+module "private_instances" {
+    source = "./modules/Ec2/private-instances"
+    environment = var.environment
+    PrivateInstances = var.PrivateInstances
+    private_sg_id = module.private_security_group.private_sg_id[0]
+    private_subnetid = module.private_subnets.private_subnets_id[0]
+}
+
+module "private_security_group" {
+  source = "./modules/network/security_groups/private-security-groups"
+  environment = var.environment
+  private_security_group_rules = var.private_security_group_rules
+  private_security_groups = var.private_security_groups
   vpc_id = module.vpc.vpc_id[0]
 }

@@ -1,0 +1,7 @@
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+uat_outs.json
+phani.txt
+
