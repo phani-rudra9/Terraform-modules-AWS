@@ -54,7 +54,7 @@ module "public_instances" {
     environment = var.environment
     PublicInstances = var.PublicInstances
     public_sg_id = module.public_security_group.public_sg_id[0]
-    public_subnetid = module.public_subnets.public_subnets_id[0]
+    public_subnetid = module.public_subnets.public_subnets_id
 }
 
 module "public_security_group" {

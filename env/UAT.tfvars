@@ -99,6 +99,23 @@ PublicInstances = [
         key_name                    = "demo-new-server"
         associate_public_ip_address = true
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
+        monitoring                  = false
+        disable_api_termination     = false
+        volume_type                 = "gp2"
+        volume_size                 = 16
+    },
+    {
+        name                        = "JumpServer-2"
+        ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)
+        availability_zone           = "ap-south-1b"
+        instance_type               = "t2.micro"
+        key_name                    = "demo-new-server"
+        associate_public_ip_address = true
+        user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
+        monitoring                  = false
+        disable_api_termination     = false
+        volume_type                 = "gp2"
+        volume_size                 = 16
     }
 ]
 
@@ -132,5 +149,9 @@ PrivateInstances = [
         key_name                    = "demo-new-server"
         associate_public_ip_address = false
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
+        monitoring                  = false
+        disable_api_termination     = false
+        volume_type                 = "gp2"
+        volume_size                 = 16
     }
 ]

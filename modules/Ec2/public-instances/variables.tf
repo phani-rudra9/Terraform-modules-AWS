@@ -11,5 +11,5 @@ variable "environment" {
 }
 
 variable "public_subnetid" {
-  type = string
+  type = list
 }

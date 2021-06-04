@@ -2,6 +2,6 @@
 terraform.tfstate
 terraform.tfstate.backup
 .terraform.lock.hcl
-uat_outs.json
+uat_out.json
 phani.txt
 
