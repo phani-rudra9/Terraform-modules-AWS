@@ -63,14 +63,15 @@ module "public_security_group" {
   public_security_group_rules = var.public_security_group_rules
   public_security_groups = var.public_security_groups
   vpc_id = module.vpc.vpc_id[0]
+  public_sg_src = module.private_security_group.private_sg_id[0]
 }
 
 module "private_instances" {
     source = "./modules/Ec2/private-instances"
     environment = var.environment
     PrivateInstances = var.PrivateInstances
-    private_sg_id = module.private_security_group.private_sg_id[0]
-    private_subnetid = module.private_subnets.private_subnets_id[0]
+    private_sg_id = module.private_security_group.private_sg_id[1]
+    private_subnetid = module.private_subnets.private_subnets_id
 }
 
 module "private_security_group" {
