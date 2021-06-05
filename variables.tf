@@ -53,3 +53,7 @@ variable "private_security_group_rules" {
 variable "private_security_groups" {
   type = list
 }
+
+variable "tg" {
+  type =list
+}

@@ -161,3 +161,18 @@ PrivateInstances = [
         volume_size                 = 16
     }
 ]
+
+tg = [
+  
+     {
+        tg_name = "tg-1"
+        name = "tg-1"
+        port        = "80"
+        protocol    = "HTTP"
+        target_type = "instance"
+        unhealthy_threshold = "3"
+        deregistration_delay = "300"
+        load_balancing_algorithm_type = "round_robin"
+        health_check_path = "/"
+     }
+]

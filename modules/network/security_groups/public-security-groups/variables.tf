@@ -14,6 +14,3 @@ variable "vpc_id" {
   type = string
 }
 
-variable "public_sg_src" {
-  type = string
-}

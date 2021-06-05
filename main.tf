@@ -63,7 +63,6 @@ module "public_security_group" {
   public_security_group_rules = var.public_security_group_rules
   public_security_groups = var.public_security_groups
   vpc_id = module.vpc.vpc_id[0]
-  public_sg_src = module.private_security_group.private_sg_id[0]
 }
 
 module "private_instances" {
@@ -80,4 +79,14 @@ module "private_security_group" {
   private_security_group_rules = var.private_security_group_rules
   private_security_groups = var.private_security_groups
   vpc_id = module.vpc.vpc_id[0]
+  public_sg_src = module.public_security_group.public_sg_id[0]
 }
+
+module "target_groups" {
+   source = "./modules/Ec2/target-groups/target-group"
+   tg = var.tg
+   environment = var.environment
+   vpc_id = module.vpc.vpc_id[0]
+   tg_ids = module.private_instances.private_instance_id[0]
+}
+

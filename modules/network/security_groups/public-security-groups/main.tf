@@ -21,6 +21,6 @@ resource "aws_security_group_rule" "public_sg_rule" {
   from_port         = lookup(var.public_security_group_rules[count.index],"from_port")
   to_port           = lookup(var.public_security_group_rules[count.index],"to_port")
   protocol          = lookup(var.public_security_group_rules[count.index],"protocol")
-  source_security_group_id       = var.public_sg_src
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.public_sg.*.id[count.index % length(var.public_security_groups)]
 }

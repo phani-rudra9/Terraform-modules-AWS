@@ -14,3 +14,7 @@ variable "private_security_groups" {
 variable "private_security_group_rules" {
   type = list
 }
+
+variable "public_sg_src" {
+  type = string 
+}
