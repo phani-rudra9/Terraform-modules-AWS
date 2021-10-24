@@ -8,7 +8,7 @@ pipeline {
         string(name: 'Branch', defaultValue: 'master', description: 'Enter Branch Name to Run')
     }
 
-//     stages {
+    stages {
 //         stage('CleanWorkspace'){
 //            steps {
 //               cleanWs()
