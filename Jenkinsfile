@@ -56,7 +56,8 @@ post {
     failure {
         mail to: 'lra9@gmail.com',
              subject: "Failed Pipeline: ${BUILD_NUMBER}",
-             emailext attachLog: true, body: "Something is wrong with ${env.BUILD_URL}", compressLog: true
+             emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true
+            //  emailext attachLog: true, body: "Something is wrong with ${env.BUILD_URL}", compressLog: true
     }
      success {
         mail to: 'lprudra9@gmail.com',
