@@ -51,5 +51,18 @@ pipeline {
               sh 'terraform destroy -auto-approve -var-file="./env/${Environment}.tfvars"'
             }    
         }
-    }    
+    } 
+post {
+    failure {
+        mail to: 'lra9@gmail.com',
+             subject: "Failed Pipeline: ${BUILD_NUMBER}",
+             body: "Something is wrong with ${env.BUILD_URL}"
+	     emailext attachLog: true
+    }
+     success {
+        mail to: 'lprudra9@gmail.com',
+             subject: "successful Pipeline:  ${env.BUILD_NUMBER}",
+             body: "Your pipeline is success ${env.BUILD_URL}"
+    }
+}
 }
