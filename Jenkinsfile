@@ -12,10 +12,6 @@ pipeline {
         stage('CleanWorkspace'){
            steps {
               cleanWs()
-              sh '''
-	        export AWS_ACCESS_KEY_ID=$access_terra_key
-                export AWS_SECRET_ACCESS_KEY=$secret_terra_key	
-	      '''
            }
         }
         stage('Terraform Code Pull'){
