@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Terraform Initialize'){
            steps {
-              sh 'terraform init -var-file="${Environment}.tfvars"'
+              sh 'terraform init -var-file="./env/${Environment}.tfvars"'
            }
         }
         stage('Select Workspace'){ 
@@ -32,7 +32,7 @@ pipeline {
         }    
         stage('Terraform Plan'){ 
            steps {
-              sh 'terraform plan -var-file="./${Environment}.tfvars" -out=${Environment}tfplanout'
+              sh 'terraform plan -var-file="./env/${Environment}.tfvars" -out=${Environment}tfplanout'
 		   }
         }
         stage('Terraform Apply') {
@@ -40,7 +40,7 @@ pipeline {
                 expression { params.TERRAFORM_ACTION == 'apply' && params.RUN_PLAN_ONLY == false}
             }
             steps {
-              sh 'terraform apply -auto-approve "${Environment}"tfplanout'
+              sh 'terraform apply -auto-approve "./env/${Environment}"tfplanout'
             }    
         }
         stage('Terraform Destroy') {
@@ -48,7 +48,7 @@ pipeline {
                 expression { params.TERRAFORM_ACTION == 'destroy' && params.RUN_PLAN_ONLY == false}
             }
             steps {
-              sh 'terraform destroy -auto-approve -var-file="./${Environment}.tfvars"'
+              sh 'terraform destroy -auto-approve -var-file="./env/${Environment}.tfvars"'
             }    
         }
     }    
