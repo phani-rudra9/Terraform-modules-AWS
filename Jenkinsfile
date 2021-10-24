@@ -8,12 +8,12 @@ pipeline {
         string(name: 'Branch', defaultValue: 'master', description: 'Enter Branch Name to Run')
     }
 
-    stages {
-        stage('CleanWorkspace'){
-           steps {
-              cleanWs()
-           }
-        }
+//     stages {
+//         stage('CleanWorkspace'){
+//            steps {
+//               cleanWs()
+//            }
+//         }
         stage('Terraform Code Pull'){
            steps {
               git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-AWS.git'
