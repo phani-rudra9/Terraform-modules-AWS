@@ -56,13 +56,12 @@ post {
     failure {
         mail to: 'lra9@gmail.com',
              subject: "Failed Pipeline: ${BUILD_NUMBER}",
-             emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true
-            //  emailext attachLog: true, body: "Something is wrong with ${env.BUILD_URL}", compressLog: true
+            //  emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true
+             body: "Something is wrong with ${env.BUILD_URL}"
     }
      success {
-        mail to: 'lprudra9@gmail.com',
-             subject: "successful Pipeline:  ${env.BUILD_NUMBER}",
-             body: "Your pipeline is success ${env.BUILD_URL}"
+       emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'lprudra9@gmail.com',
+       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'lprudra9@gmail.com'
     }
 }
 }
