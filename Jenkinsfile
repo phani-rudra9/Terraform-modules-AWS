@@ -32,7 +32,7 @@ pipeline {
         }    
         stage('Terraform Plan'){ 
            steps {
-              sh 'terraform plan -var-file="./env/${Environment}.tfvars" -out=${Environment}tfplanout'
+              sh 'terraform plan -var-file="./env/${Environment}.tfvars" -out=$./env/{Environment}tfplanout'
 		   }
         }
         stage('Terraform Apply') {
