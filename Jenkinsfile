@@ -7,15 +7,15 @@ pipeline {
         choice(name: 'TERRAFORM_ACTION', choices: ['apply' , 'destroy'],  description: 'Do You Want to Apply or Destroy?')
         string(name: 'Branch', defaultValue: 'master', description: 'Enter Branch Name to Run')
     }
-	environment {
-                export AWS_ACCESS_KEY_ID=$access_terra_key
-                export AWS_SECRET_ACCESS_KEY=$secret_terra_key	
-}
+
     stages {
         stage('CleanWorkspace'){
            steps {
               cleanWs()
-              sh 'whoami'
+              sh '''
+	        export AWS_ACCESS_KEY_ID=$access_terra_key
+                export AWS_SECRET_ACCESS_KEY=$secret_terra_key	
+	      '''
            }
         }
         stage('Terraform Code Pull'){
