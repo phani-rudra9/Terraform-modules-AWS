@@ -60,7 +60,7 @@ post {
              body: "Something is wrong with ${env.BUILD_URL}"
     }
      success {
-       emailext replyTo: 'lprudra9@gmail.com',
+       emailext to: 'lprudra9@gmail.com',
        attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true,
        subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}"
     }
