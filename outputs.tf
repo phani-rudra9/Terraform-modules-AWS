@@ -49,3 +49,19 @@ output "private_instance_id" {
 output "private_sg_id" {
   value = module.private_security_group.*.private_sg_id
 }
+
+output "aws_elb_id" {
+  value = module.lb.*.aws_elb_id
+}
+
+output "aws_elb_dnsname" {
+  value = module.lb.*.aws_elb_dnsname
+}
+
+output "aws_elb_arn" {
+  value = module.lb.*.aws_elb_arn
+}
+
+output "zoneid" {
+  value = module.lb.*.zoneid
+}

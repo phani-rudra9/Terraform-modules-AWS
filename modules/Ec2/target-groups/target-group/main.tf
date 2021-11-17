@@ -24,5 +24,8 @@ resource "aws_lb_target_group" "tg" {
 resource "aws_lb_target_group_attachment" "tg_attach" {
   count = length(var.tg)
   target_group_arn = element(aws_lb_target_group.tg.*.arn,count.index)
-  target_id        = var.tg_ids
+  # target_id        = var.tg_ids
+  # target_id        = element(split(",", join(",", private_instances.*.id)), count.index)
+  target_id          = element(var.private_instances, count.index)
+
 }

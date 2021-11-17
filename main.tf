@@ -86,7 +86,15 @@ module "target_groups" {
    source = "./modules/Ec2/target-groups/target-group"
    tg = var.tg
    environment = var.environment
+   private_instances = module.private_instances.private_instance_id
    vpc_id = module.vpc.vpc_id[0]
-   tg_ids = module.private_instances.private_instance_id[0]
 }
 
+module "lb" {
+  source = "./modules/Ec2/load-balancers"
+  lbs = var.lbs
+  environment = var.environment
+  subnets = module.public_subnets.public_subnets_id[0]
+  security_group_id = module.public_security_group.public_sg_id[0]
+
+}

@@ -57,3 +57,15 @@ variable "private_security_groups" {
 variable "tg" {
   type =list
 }
+
+# variable "security_group_id" {
+#   type = list
+# }
+
+variable "lbs" {
+  type = list
+}
+
+# variable "subnets" {
+#   type = list
+# }

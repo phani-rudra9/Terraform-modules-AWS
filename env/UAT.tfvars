@@ -176,3 +176,11 @@ tg = [
         health_check_path = "/"
      }
 ]
+
+lbs = [
+    {
+        name = "demo-alb"
+        lb_scheme_internal = "false"
+        lb_type = "application"
+    }
+]

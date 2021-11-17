@@ -10,6 +10,10 @@ variable "environment" {
   type = string
 }
 
-variable "tg_ids" {
-  type = string
+# variable "tg_ids" {
+#   type = string
+# }
+
+variable "private_instances" {
+  type = list
 }
