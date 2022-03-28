@@ -14,11 +14,11 @@ pipeline {
 //               cleanWs()
 //            }
 //         }
-        stage('Terraform Code Pull'){
-           steps {
-              git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-AWS.git'
-           }
-        }
+//         stage('Terraform Code Pull'){
+//            steps {
+//               git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-AWS.git'
+//            }
+//         }
         stage('Terraform Initialize'){
            steps {
               sh 'terraform init -var-file="./env/${Environment}.tfvars"'
