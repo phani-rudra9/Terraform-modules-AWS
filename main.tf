@@ -91,10 +91,10 @@ module "target_groups" {
 }
 
 module "lb" {
-  source = "./modules/Ec2/load-balancers"
+  source = "./modules/Ec2/load-balancers/application-lb/alb"
   lbs = var.lbs
   environment = var.environment
-  subnets = module.public_subnets.public_subnets_id[0]
+  subnets = module.public_subnets.public_subnets_id
   security_group_id = module.public_security_group.public_sg_id[0]
 
 }

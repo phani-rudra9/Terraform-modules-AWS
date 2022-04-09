@@ -7,7 +7,7 @@ variable "lbs" {
 }
 
 variable "subnets" {
-  type = string
+  type = list(string)
 }
 
 variable "environment" {

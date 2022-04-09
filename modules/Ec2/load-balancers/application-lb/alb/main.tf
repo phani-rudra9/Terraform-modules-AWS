@@ -4,7 +4,7 @@ resource "aws_lb" "phani" {
   internal           = lookup(var.lbs[count.index],"lb_scheme_internal")
   load_balancer_type = lookup(var.lbs[count.index],"lb_type")
   security_groups    = [var.security_group_id]
-  subnets            = [var.subnets]
+  subnets            = var.subnets
   enable_deletion_protection = true
 
 #   access_logs {
