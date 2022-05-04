@@ -5,7 +5,7 @@ resource "aws_lb" "phani" {
   load_balancer_type = lookup(var.lbs[count.index],"lb_type")
   security_groups    = [var.security_group_id]
   subnets            = var.subnets
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
 #   access_logs {
 #     bucket  = aws_s3_bucket.lb_logs.bucket

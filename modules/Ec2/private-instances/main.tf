@@ -20,3 +20,10 @@ resource "aws_instance" "PrivateInstance" {
 	    Terraformed = "True"
 	}
 }
+
+resource "null_resource" "private_ips" {
+  count = length(var.PrivateInstances)
+  provisioner "local-exec" {
+    command = "echo ${element(aws_instance.PrivateInstance.*.private_ip, count.index)} >> hosts-privateinstances.txt"
+  }
+}

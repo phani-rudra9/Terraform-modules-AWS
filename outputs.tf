@@ -65,3 +65,11 @@ output "aws_elb_arn" {
 output "zoneid" {
   value = module.lb.*.zoneid
 }
+
+output "private_instance_ip" {
+  value = module.public_instances.*.private_instance_ip
+}
+
+output "private_instance_ip_addr" {
+  value = module.private_instances.*.private_instance_ip_addr
+}
