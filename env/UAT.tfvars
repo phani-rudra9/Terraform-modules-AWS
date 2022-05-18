@@ -93,7 +93,6 @@ public_security_group_rules = [
 PublicInstances = [
     {
         name                        = "JumpServer"
-        ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)
         availability_zone           = "ap-south-1a"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"
@@ -135,7 +134,6 @@ private_security_group_rules = [
 PrivateInstances = [ 
     {
         name                        = "app-server-1"
-        ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)
         availability_zone           = "ap-south-1a"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"
@@ -149,7 +147,6 @@ PrivateInstances = [
 
     {
         name                        = "app-server-2"
-        ami                         = "ami-0123b531fc646552f" #Ubuntu Server 18.04 LTS (HVM)
         availability_zone           = "ap-south-1b"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"

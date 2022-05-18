@@ -1,61 +1,61 @@
 variable "region" {
-    type = string
+  type = string
 }
 
 variable "vpc" {
-    type = list
+  type = list(any)
 }
 
 variable "environment" {
-    type = string
+  type = string
 }
 
 variable "public_subnets" {
-    type = list
+  type = list(any)
 }
 
 variable "private_subnets" {
-    type = list
+  type = list(any)
 }
 
 variable "igw_name" {
-    type = string
+  type = string
 }
 
 variable "public_subnet_route_tables" {
-    type = list
+  type = list(any)
 }
 
 variable "private_subnet_route_tables" {
-    type = list
+  type = list(any)
 }
 
 variable "PublicInstances" {
-  type = list
+  type = list(any)
 }
 
 variable "public_security_group_rules" {
-  type = list
+  type = list(any)
 }
 
 variable "public_security_groups" {
-  type = list
+  type = list(any)
 }
 
 variable "PrivateInstances" {
-  type = list
+  type = list(any)
 }
 
 variable "private_security_group_rules" {
-  type = list
+  type = list(any)
 }
 
 variable "private_security_groups" {
-  type = list
+  type = list(any)
 }
 
 variable "tg" {
-  type =list
+  type = list(any)
 }
 
 # variable "security_group_id" {
@@ -63,7 +63,7 @@ variable "tg" {
 # }
 
 variable "lbs" {
-  type = list
+  type = list(any)
 }
 
 # variable "subnets" {
