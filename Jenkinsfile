@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-    maven 'terraform'
+    terraform 'terraform'
   }
     environment {
     BRANCH_NAME = "master"
@@ -22,7 +22,7 @@ pipeline {
            }
         }
         stage('Git checkout') {
-            teps {
+            steps {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "*/${BRANCH_NAME}"]],
