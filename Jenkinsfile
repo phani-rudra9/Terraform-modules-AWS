@@ -8,19 +8,19 @@ pipeline {
     REPO_NAME = "Terraform-modules-AWS"
   }
     parameters {
-        string(name: 'Project', defaultValue: 'Demo Project', description: 'Project to Deploy')
-        choice(name: 'Environment', choices: ['UAT', 'STAGE', "PROD"], description: 'Select Workspace Environment')
-        booleanParam (name : 'RUN_PLAN_ONLY', defaultValue: true, description: 'Use Checkbox checked to Run Terraform Plan Only. Uncheck Checkbox to Run Terraform Plan with Apply/Destroy Stage.')
+        string(name: 'Project', defaultValue: 'Demo Project', description: 'Project to provision infra in AWS Cloud')
+        choice(name: 'Environment', choices: ['UAT', 'STAGE', "PROD"], description: 'Select Environment for Workspace')
+        booleanParam (name : 'RUN_ONLY_PLAN', defaultValue: true, description: 'Use Checkbox to Run Terraform Plan Only Uncheck Checkbox to Run Terraform Plan with Apply/Destroy Stage.')
         choice(name: 'TERRAFORM_ACTION', choices: ['apply' , 'destroy'],  description: 'Do You Want to Apply or Destroy?')
         string(name: 'Branch', defaultValue: 'master', description: 'Enter Branch Name to Run')
     }
 
     stages {
-        stage('CleanWorkspace'){
-           steps {
-              cleanWs()
-           }
-        }
+        // stage('CleanWorkspace'){
+        //    steps {
+        //       cleanWs()
+        //    }
+        // }
         stage('Git checkout') {
             steps {
                 checkout([
