@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    tools {
+    maven 'terraform'
+  }
+    environment {
+    BRANCH_NAME = "master"
+    REPO_NAME = "Terraform-modules-AWS"
+  }
     parameters {
         string(name: 'Project', defaultValue: 'Demo Project', description: 'Project to Deploy')
         choice(name: 'Environment', choices: ['UAT', 'STAGE', "PROD"], description: 'Select Workspace Environment')
@@ -9,16 +16,20 @@ pipeline {
     }
 
     stages {
-//         stage('CleanWorkspace'){
-//            steps {
-//               cleanWs()
-//            }
-//         }
-//         stage('Terraform Code Pull'){
-//            steps {
-//               git branch: '${Branch}', url: 'https://github.com/phani-rudra9/Terraform-modules-AWS.git'
-//            }
-//         }
+        stage('CleanWorkspace'){
+           steps {
+              cleanWs()
+           }
+        }
+        stage('Git checkout') {
+            teps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "*/${BRANCH_NAME}"]],
+                    userRemoteConfigs: [[credentialsId: 'git-creds', url: "https://github.com/phani-rudra9/${REPO_NAME}"]]
+                ])       
+            }   
+       }
         stage('Terraform Initialize'){
            steps {
               sh 'terraform init -var-file="./env/${Environment}.tfvars"'
