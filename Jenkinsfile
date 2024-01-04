@@ -1,8 +1,10 @@
 pipeline {
-    agent any
-    tools {
-    terraform 'terraform'
-  }
+    agent {
+	label sample-slave    
+    }
+  //   tools {
+  //   terraform 'terraform'
+  // }
     environment {
     BRANCH_NAME = "master"
     REPO_NAME = "Terraform-modules-AWS"
