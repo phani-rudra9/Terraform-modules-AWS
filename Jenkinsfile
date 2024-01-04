@@ -1,6 +1,6 @@
 pipeline {
     agent {
-	label sample-slave    
+	label 'sample-slave'
     }
   //   tools {
   //   terraform 'terraform'
