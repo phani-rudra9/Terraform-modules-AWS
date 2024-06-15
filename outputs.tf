@@ -73,3 +73,7 @@ output "private_instance_ip" {
 output "private_instance_ip_addr" {
   value = module.private_instances.*.private_instance_ip_addr
 }
+
+# output "ami_id" {
+#   value = module.private_instances.*.ami_id
+# }

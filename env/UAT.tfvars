@@ -1,4 +1,4 @@
-region = "ap-south-1"
+region = "us-west-1"
 
 environment = "UAT"
 
@@ -24,14 +24,14 @@ public_subnets = [
         {
             cidr = "172.30.1.0/24"
             name = "public-subnet-1a"
-            availability_zone = "ap-south-1a" 
+            availability_zone = "us-west-1a" 
             map_public_ip_on_launch = "true"
         },
                 
         {
             cidr = "172.30.2.0/24"
             name = "public-subnet-1b"
-            availability_zone = "ap-south-1b" 
+            availability_zone = "us-west-1b" 
             map_public_ip_on_launch = "true"
         }
 
@@ -41,13 +41,13 @@ private_subnets = [
         {
             cidr = "172.30.100.0/24"
             name = "private-subnet-1a"
-            availability_zone = "ap-south-1a" 
+            availability_zone = "us-west-1a" 
         },
                 
         {
             cidr = "172.30.101.0/24"
             name = "private-subnet-1b"
-            availability_zone = "ap-south-1b" 
+            availability_zone = "us-west-1b" 
         }
 ]
 
@@ -93,7 +93,7 @@ public_security_group_rules = [
 PublicInstances = [
     {
         name                        = "JumpServer"
-        availability_zone           = "ap-south-1a"
+        availability_zone           = "us-west-1a"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"
         associate_public_ip_address = true
@@ -134,27 +134,27 @@ private_security_group_rules = [
 PrivateInstances = [ 
     {
         name                        = "app-server-1"
-        availability_zone           = "ap-south-1a"
+        availability_zone           = "us-west-1a"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"
         associate_public_ip_address = false
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
         monitoring                  = false
         disable_api_termination     = false
-        volume_type                 = "gp2"
+        volume_type                 = "gp3"
         volume_size                 = 16
     },
 
     {
         name                        = "app-server-2"
-        availability_zone           = "ap-south-1b"
+        availability_zone           = "us-west-1b"
         instance_type               = "t2.micro"
         key_name                    = "demo-new-server"
         associate_public_ip_address = false
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
         monitoring                  = false
         disable_api_termination     = false
-        volume_type                 = "gp2"
+        volume_type                 = "gp3"
         volume_size                 = 16
     }
 ]

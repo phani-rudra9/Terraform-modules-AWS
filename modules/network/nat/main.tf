@@ -1,5 +1,4 @@
 resource "aws_eip" "eip" {
-  vpc   = true
   count = length(var.public_subnets)
 }
 
