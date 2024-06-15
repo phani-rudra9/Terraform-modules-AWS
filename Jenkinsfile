@@ -1,12 +1,15 @@
 pipeline {
     agent {
 	docker {
-            label 'demo'                    
-        }
+	    image 'hashicorp/terraform:1.8'
+	    args '--entrypoint=""' 
+	}
     }
     environment {
     BRANCH_NAME = "master"
     REPO_NAME = "Terraform-modules-AWS"
+    HCP_CLIENT_ID = credentials('hcp-client-id')
+    HCP_CLIENT_SECRET = credentials('hcp-client-secret')
   }
     parameters {
         string(name: 'Project', defaultValue: 'Demo Project', description: 'Project to provision infra in AWS Cloud')
