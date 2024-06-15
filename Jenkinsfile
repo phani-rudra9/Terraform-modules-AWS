@@ -1,6 +1,8 @@
 pipeline {
     agent {
-	label 'demo'
+	docker {
+            label 'demo'                    
+        }
     }
     environment {
     BRANCH_NAME = "master"
