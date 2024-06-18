@@ -19,38 +19,32 @@ resource "aws_instance" "PublicInstance" {
 		Environment = var.environment
 	  Terraformed = "True"
 	}
-}
-
-resource "null_resource" "private_ips" {
-  count = length(var.PublicInstances)
-  provisioner "local-exec" {
-    command = "echo ${element(aws_instance.PublicInstance.*.private_ip, count.index)} >> hosts.txt"
+    provisioner "local-exec" {
+    command = "echo ${element(self.*.public_ip, count.index)} >> hosts.txt"
   }
 }
 
-# data "aws_ami_ids" "ubuntu" {
-#   owners = ["971076122335"]
-
-#   filter {
-#     name   = "name"
-#     values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
+# resource "null_resource" "private_ips" {
+#   count = length(var.PublicInstances)
+#   provisioner "local-exec" {
+#     command = "echo ${element(aws_instance.PublicInstance.*.public_ip, count.index)} >> hosts.txt"
 #   }
 # }
 
-
 data "aws_ami" "ubuntu" {
-
-    most_recent = true
-
-    filter {
-        name   = "name"
-        values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-    }
-
-    filter {
-        name = "virtualization-type"
-        values = ["hvm"]
-    }
-
-    owners = ["099720109477"]
+  most_recent = true
+  owners      = ["099720109477"]
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
 }
+

@@ -9,14 +9,6 @@ vpc = [
         enable_dns_hostnames = "true"
         name = "test-vpc"
         tenancy = "default"
-    },
-
-    {
-        cidr = "192.168.0.0/16"
-        enable_dns_support = "true"
-        enable_dns_hostnames = "true"
-        name = "test1-vpc"
-        tenancy = "default"  
     }
 ]
 
@@ -100,7 +92,7 @@ PublicInstances = [
         user_data                   = "./modules/Ec2/user-data/install_apache2.sh"
         monitoring                  = false
         disable_api_termination     = false
-        volume_type                 = "gp2"
+        volume_type                 = "gp3"
         volume_size                 = 16
     }
 ]

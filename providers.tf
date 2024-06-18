@@ -21,6 +21,7 @@ data "hcp_vault_secrets_app" "aws_app" {
 }
 
 provider "hcp" {
-  client_id          = ""
-  client_secret      = ""
+  client_id          = "Q1xVgTNo3qHFOE8d5omdmDXvcwoWgOTD"
+  client_secret      = "cCxybAf05ZdCAVv-aJvL_gXQF-qlQaLS9iiReB1VfHzGeeHfHPB0fzxBPQm-sQF4"
 }
+
