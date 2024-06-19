@@ -3,7 +3,7 @@ terraform {
     organization = "terraform-9"
 
     workspaces {
-      name = "demo-new"
+      name = "UAT"
     }
   }
 }
