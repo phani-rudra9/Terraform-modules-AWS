@@ -1,0 +1,58 @@
+name: CI
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    
+    env:
+      BRANCH_NAME: master
+      REPO_NAME: Terraform-modules-AWS
+      HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
+      HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH_NAME }}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.8
+
+      - name: Terraform Init
+        run: terraform init -var-file="./env/${{ github.event.inputs.Environment }}.tfvars"
+
+      - name: Select Terraform Workspace
+        run: terraform workspace new ${{ github.event.inputs.Environment }} || terraform workspace select ${{ github.event.inputs.Environment }}
+
+      - name: Terraform Plan
+        run: terraform plan -var-file="./env/${{ github.event.inputs.Environment }}.tfvars" -out=./env/${{ github.event.inputs.Environment }}tfplanout
+
+      - name: Terraform Apply
+        if: ${{ github.event.inputs.TERRAFORM_ACTION == 'apply' && github.event.inputs.RUN_ONLY_PLAN == 'false' }}
+        run: terraform apply -auto-approve "./env/${{ github.event.inputs.Environment }}tfplanout"
+
+      - name: Terraform Destroy
+        if: ${{ github.event.inputs.TERRAFORM_ACTION == 'destroy' && github.event.inputs.RUN_ONLY_PLAN == 'false' }}
+        run: terraform destroy -auto-approve -var-file="./env/${{ github.event.inputs.Environment }}.tfvars"
+
+      - name: Send Email Notification
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "GitHub Actions Build Notification: ${{ github.event.repository.name }}-Build# ${{ github.run_id }} ${{ job.status }}"
+          body: "Dear team, the pipeline has finished with status: ${{ job.status }}. Please check the logs for more details."
+          to: lprudra9@gmail.com
+          from: no-reply@githubactions.com
